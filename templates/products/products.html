@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block tittle %}
+E-Commerce Productos
+{% endblock%}
+
+{% block content %}
+<h1>Productos legales</h1>
+
+<div>
+  <a href="{% url 'create_product'%}">Añadir producto +</a>
+  <br>
+</div>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Cantidad</th>
+    <th>Precio</th>
+    <th>Descripción</th>
+    <th>Marca</th>
+  </tr>
+  {% for p in products %}
+  <tr>
+    <td>{{p.id}}</td>
+    <td>{{p.name}}</td>
+    <td>{{p.stock}}</td>
+    <td>{{p.price}}</td>
+    <td>{{p.description}}</td>
+    <td>{{p.brand}}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}

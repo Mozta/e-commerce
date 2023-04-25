@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block tittle %}
+E-Commerce Django
+{% endblock%}
+
+{% block content %}
+<h1>Bienvenido a mi E-Commerce</h1>
+
+<h3>Productos</h3>
+
+<ul>
+    {% for p in products %}
+    <li>{{ p }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
