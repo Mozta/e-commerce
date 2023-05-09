@@ -1,17 +1,16 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
-
 {% block tittle %}
-E-Commerce Productos
+E-Commerce Productos UPDATE
 {% endblock%}
 
 {% block content %}
 <h1>Productos legales</h1>
-<h4>Registro de nuevo producto</h4>
+<h4>Actualización de producto</h4>
 
 <form method="post">
   {% csrf_token %}
-  {{ form|crispy }}
+  {{form|crispy}}
   <button type="submit" class="btn btn-primary">Guardar</button>
 </form>
 

@@ -18,6 +18,8 @@ E-Commerce Productos
     <th>Precio</th>
     <th>Descripción</th>
     <th>Marca</th>
+    <th>Editar</th>
+    <th>Eliminar</th>
   </tr>
   {% for p in products %}
   <tr>
@@ -27,8 +29,42 @@ E-Commerce Productos
     <td>{{p.price}}</td>
     <td>{{p.description}}</td>
     <td>{{p.brand}}</td>
+    <td><a href="{% url 'update_product' p.id %}">Editar</a></td>
+    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Eliminar
+      </button>
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Eliminar</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ¿Estás seguro de eliminar el producto {{p.name}}?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </td>
+    <!-- <td><a href="{% url 'delete_product' p.id %}">Eliminar</a></td> -->
   </tr>
+
+
   {% endfor %}
 </table>
+
+
 
 {% endblock %}
